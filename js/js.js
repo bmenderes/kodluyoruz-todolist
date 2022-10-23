@@ -12,15 +12,18 @@ function getEventTarget(e) {
     e = e || window.event;
     return e.target || e.srcElement; 
 }
-
 ulDOM.onclick = function(event) {
     console.log(toDoList)
     var target = getEventTarget(event);
-    let find = target.parentElement.innerHTML
+    let find = target.parentElement.innerHTML   
     let indexNr = toDoList.indexOf(find)
+    target.parentElement.style.display = 'none'
     console.log(indexNr)
-    toDoList.slice(indexNr,1)
+    toDoList.splice(indexNr,1)
     console.log(toDoList)
+    localStorage.clear();
+    localStorage.setItem("liste",JSON.stringify(toDoList))
+
 };
 
 // toDoList'e localstorage taki bilgiyi aktarma
@@ -36,11 +39,6 @@ if(liste){
     btnDOM.addEventListener("click", addItem) // btn click 
     btnDOM.addEventListener("mouseover", turnblack)  
     btnDOM.addEventListener("mouseout", defaultcolor)    
-
-// deneme
-    function deneme(){
-        console.log("dene");
-    }
 
     
  // localstore daki veriyi listeye yazma   
