@@ -15,14 +15,14 @@ function getEventTarget(e) {
 ulDOM.onclick = function(event) {
     console.log(toDoList)
     var target = getEventTarget(event);
-    let find = target.parentElement.innerHTML   
-    let indexNr = toDoList.indexOf(find)
-    target.parentElement.style.display = 'none'
-    console.log(indexNr)
-    toDoList.splice(indexNr,1)
+    let find = target.parentElement.innerHTML   // kapama tusuna ait olan li elementinin icerigini bulma
+    let indexNr = toDoList.indexOf(find) // silinecek satirin index numarasni bulma
+    target.parentElement.style.display = 'none' // elementi listeden kaldirma
+    console.log(indexNr) 
+    toDoList.splice(indexNr,1) // toDoList icerisinden kaldirilacak olan item i cikartma
     console.log(toDoList)
-    localStorage.clear();
-    localStorage.setItem("liste",JSON.stringify(toDoList))
+    localStorage.clear(); //local storage i silme
+    localStorage.setItem("liste",JSON.stringify(toDoList)) // tekrar local storage ekleme
 
 };
 
